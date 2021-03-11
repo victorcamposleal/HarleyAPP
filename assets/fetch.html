@@ -1,0 +1,24 @@
+
+<h1>Novedades</h1>
+<div id="post"></div>
+<script>
+
+
+fetch('http://harley.maremagnocomunicacion.com/wp-json/wp/v2/posts')
+      .then((response) => response.json())
+      .then((json) => {
+        let post=json
+      })
+      .catch((error) => console.error(error))
+
+
+      for (let i = 0; i < post.length; i++) {
+        document.getElementById('post').innerHTML += `
+
+        <div>${post[i].content.rendered} </div>
+        
+        `
+        
+          
+      }
+</script>
