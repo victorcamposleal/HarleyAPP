@@ -15,7 +15,7 @@ const[isLoading,setIsloading]=useState(true);
 
 useEffect(() => {
 
-  fetch('http://harley.maremagnocomunicacion.com/wp-json/wp/v2/posts')
+  fetch('http://harley.maremagnocomunicacion.com/wp-json/wp/v2/posts/?per_page20')
   .then((response) => response.json())
   .then((json) => {
     setPost(json)
@@ -26,42 +26,21 @@ useEffect(() => {
 
 },[])
   
-
-
-  // to inject javascript in to the app
-  //const javascript='window.alert()this is javascript'
-    //to use a local html
-    //const locaLFile=require('../assets/fetch.html')
-const list = () => {
-      return post.map((element) => {
+const renderItem=({item}) => {
         
-        if (element.categories[0]===1) {
-
-          
-          return (
-            
-            <View style={{ flex: 1 , margin:20, borderBottomColor:'black', borderWidth:1}}>
+  if (item.categories[0]===1) { return (
+      
+      <View style={{ flex: 1 , margin:20, borderBottomColor:'black', borderWidth:1}}>
 
 
- 
-       <Text>{element.title.rendered}</Text>
-            <HTML source={{ html: element.content.rendered }}  />  
-            
-        </View>
-        
-        
-        
-        
-        
-        );
-      }
-      });
-    };
-  
-  
+
+ <Text>{item.title.rendered}</Text>
+        <HTML source={{ html: item.content.rendered }}  />    
+      
+  </View>
+)}}; 
 
 
-  
     return (
 
       <View>
@@ -84,57 +63,32 @@ style={[styles.container,styles.img]}
 />
             </View>
         }
-        <ScrollView >
 
-            
-         
-            {/* <FlatList
-            data={post}
-            keyExtractor={({ id }, index) => id}
-            renderItem={({ item }) => (
-              <Novedad key={item.id} text={item}/>
-              
-              )}
-              
-            />   */}
-  
-        {list()}
-
-          <WebView
-         // source={locaLFile}
-         // source={{uri:'file:///android_asset/fetch.html' }}
-         //injectedJavascriptBeforeConetentLoaded={javascript}
-         //incject html inline 
-         //source={{html:'<h1>this is inline html its normal html</h1>'}}
-         // source={{uri:'https://cantabriaharleydavidson.com/category/novedades/' }}
-         /> 
+ 
+     
+     
+     <FlatList
       
-        
-        </ScrollView>
-        
-        <Button title="Perfil"
-            onPress={()=>{navigation.push("Perfil")}}/>
+      data={post}
+      renderItem={renderItem} 
+     
+      initialNumToRender={3}
+      maxToRenderPerBatch={10}
+        keyExtractor={(item, index) => index}
+      />    
+         
+            
+  
+     
+
+      
+     
+
             </View>
     )
 }
 
 export default Novedades
-function Novedad(props) {
-  const{ text}=props;
-  return(
-
-
-   
-  <View>
-              {/*   //<Text style={styles.text}> {text.title.rendered} </Text>*/}
-                <WebView source={{html:`<div> {text.content.rendered} </div>`}} />
-                     {/* <Text style={styles.text}> {text.content.rendered} </Text>*/}
-                
-               
-            </View>
-
-  )
-}
 const styles = StyleSheet.create({
 container:{
 
