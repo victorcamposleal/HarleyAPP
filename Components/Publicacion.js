@@ -22,6 +22,9 @@ import { Button, StyleSheet, Text, View } from 'react-native'
               <Button title="Novedades"
             onPress={()=>{navigation.navigate("Novedades")}
             }/>
+              <Button title="Cita"
+            onPress={()=>{navigation.navigate("Cita")}
+            }/>
         </View>
     )
 }

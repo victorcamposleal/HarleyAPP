@@ -1,8 +1,24 @@
 import React from 'react'
+import { createIconSetFromIcoMoon, FontAwesome } from '@expo/vector-icons'
 import { StyleSheet, Text, View, Button } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MiStackGeneral from './MiStackGeneral';
 import ProfileDrawer from './PorfileDrawer';
+import Appointment from'./Appointment';
+import Tienda from "./Tienda";
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons'; 
+import { MaterialIcons } from '@expo/vector-icons'; 
+import Cita from "./Cita";
+import Form from "./Form";
+
+//import Icon from 'react-native-vector-icons/FontAwesome'
+import Award from '../assets/Store.svg';
+
 //para poder eusar el bttom tab tenemps que crear la constamnte de bottom tab
 const Tab =createBottomTabNavigator();
 
@@ -44,7 +60,42 @@ function Follow(params) {
 // dentro dfe las opciones del tab podemos ocultar lo con options={tabBarvisiblle:false}
 function MiBottom({navigation}){
     return (
-        <Tab.Navigator styles={styles.Menu}>
+        <Tab.Navigator
+     
+        tabBarOptions={{
+            activeTintColor: '#fff',
+            inactiveTintColor: 'white',
+            activeBackgroundColor: '#c4461c',
+            inactiveBackgroundColor: '#fa6600',
+                style: {
+                      backgroundColor: '#fa6600',
+                      paddingBottom: 3,
+                      
+                },
+                labelStyle: {
+                    fontSize: 20,
+                  },
+                  tabStyle: {
+                    fontSize: 10,
+                  },
+         }}
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        >
         <Tab.Screen options={({...args})=>{
 
 //ponemos una logica para esconder el menu, los args son los argumentos que  tiene home
@@ -58,18 +109,30 @@ if(args.route.state.routes[args.route.state.routes.length-1].name==='Comentarios
 }return{tabBarVisible:true}
 
 
-        }} name="Home"  styles={styles.Menu} >
-           {(props)=><MiStackGeneral  {...props} nombreInicial="Inicio"/>}
+        }} name="Inicio"  styles={styles.Menu} 
+        
+        
+        >
+           {(props)=> <MiStackGeneral  {...props} nombreInicial="Inicio"/>}
            
             </Tab.Screen>
         <Tab.Screen name="Search" >
             {(props)=><MiStackGeneral{...props} nombreInicial="Look"/>}
             
             </Tab.Screen>
-        <Tab.Screen name="Add" component={Add}/ >
 
-        <Tab.Screen name="Follow" component={MiStackGeneral}/ >
-        <Tab.Screen name="Profile" component={ProfileDrawer}/ >
+
+        <Tab.Screen name="Tienda" 
+        component={Tienda}
+   
+   
+        
+        
+         
+        / >
+
+       
+        <Tab.Screen name="Taller" component={Appointment}/ >
             </Tab.Navigator>
     )
 }
@@ -77,10 +140,12 @@ if(args.route.state.routes[args.route.state.routes.length-1].name==='Comentarios
 export default MiBottom
 
 const styles = StyleSheet.create({
- Menu:{
-backgroundColor:'#fa6600',
-fontWeight:"200",
+
+Menu:{
+    backgroundColor:'#fa6600',
+    color:'black',
+    fontSize:20
+}
 
 
- }
 })

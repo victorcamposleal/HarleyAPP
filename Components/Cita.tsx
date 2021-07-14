@@ -54,7 +54,7 @@ function Cita({navigation}){
       contentContainerStyle={styles.container}>
       <Hero />
       <View style={styles.formContainer}>
-        <Form {...{ register, setValue, validation, errors }}>
+         <Form {...{ register, setValue, validation, errors }}>
           <Input name="name" label="Name " />
           <Input name="email" label="Email" />
           <DateInput
@@ -68,7 +68,7 @@ function Cita({navigation}){
       onRef={(input) => (dateInput = input)}
     />
           <Button title="Reserva" onPress={handleSubmit(onSubmit)} />
-        </Form>
+        </Form> 
       </View>
     </KeyboardAwareScrollView>
     </ScrollView >
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     flex: 1,
 
     paddingTop: Constants.statusBarHeight,  
-    backgroundColor: '',
+    backgroundColor: 'red',
   },
   formContainer: {
     padding: 8,

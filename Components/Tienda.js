@@ -4,13 +4,10 @@ import { StyleSheet, Text, View,FlatList,Button , Imag, ScrollView, useWindowDim
 import {useEffect, useState } from 'react';
 import {WebView} from 'react-native-webview';
 import Award from '../assets/Moto.svg';
-import HTML from "react-native-render-html";
-import { render } from 'react-dom';
-import * as Progress from 'react-native-progress';
-//import * as Progress from 'react-native-progress';
-//import * as Progress from 'expo-progress';
-import ProgressBar from 'react-native-progress/Bar';
-const Pagina = ({navigation}) => {
+
+
+
+const Tienda = ({navigation}) => {
 
 
   const[isLoading,setIsloading]=useState(true);
@@ -36,65 +33,20 @@ width={200}
 height={200}
 style={[styles.container,styles.img]}
 
-/>
+/> 
     </View>
-}
+} 
 
-    <WebView
-         // source={locaLFile}
-         // source={{uri:'file:///android_asset/fetch.html' }}
-          //injectedJavascriptBeforeConetentLoaded={javascript}
-          //incject html inline 
-         //source={{html:'<h1>this is inline html its normal html</h1>'}}
-         source={{uri:'https://cantabriaharleydavidson.com' }}
-          /> 
+    <WebView source={{uri:'https://cantabriaharleydavidson.com/tienda/' }} /> 
+      
       
         
         </View>
     )
 }
 
-export default Pagina
-function Novedad(props) {
-  const{ text}=props;
-  return(
+export default Tienda
 
-
-   
-  <View>
-
-{
-    // aqui estamo haciuendo una condcional si loading es verdadero entonces se sale el simbolo
-    
-    
-    isLoading &&
-    <View style={[styles.container, styles.horizontal]}>
-
-    <ActivityIndicator
-    size="large"
-    color="#fa6600"/>
-
-<Award
-width={200}
-height={200}
-style={[styles.container,styles.img]}
-
-/>
-    </View>
-}
-
-
-
-
-           
-              <WebView source={{html:`<div> {text.content.rendered} </div>`}} />
-                  
-                
-               
-            </View>
-
-  )
-}
 const styles = StyleSheet.create({
 
   container:{

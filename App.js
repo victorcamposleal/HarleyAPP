@@ -5,7 +5,7 @@ import {StyleSheet, Text, View,Button, AsyncStorage} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import MiStackGeneral from './Components/MiStackGeneral'
 import MiBottom from  './Components/MiBottom';
-
+import Noticias from"./Components/Noticias";
 
 import {useEffect, useState } from 'react';
 import Inicio from './inicio';
@@ -13,6 +13,19 @@ import Body from './Body';
 import Footer from './Footer';
 
 export default function App() {
+
+  const [post,setPost]=useState([]);
+  useEffect(() => {
+
+
+    fetch('http://harley.maremagnocomunicacion.com/wp-json/wp/v2/posts/?per_page20')
+    .then((response) => response.json())
+    .then((json) => {
+      setPost(json)
+
+    })
+    .catch((error) => console.error(error))
+  },[])
 // // const [count,setCount]= useState(2);
 // // const [tareas,setTareas]= useState([]);
 // // const [texto,setTexto]=useState('');
@@ -101,10 +114,13 @@ export default function App() {
   
 // // }
   return (
+
     <NavigationContainer>
 <MiBottom />
 
       </NavigationContainer>
+
+
   );
 }
 
